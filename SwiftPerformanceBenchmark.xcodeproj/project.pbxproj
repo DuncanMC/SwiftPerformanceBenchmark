@@ -12,6 +12,9 @@
 		AE7560531ACACC0E00EFD3D4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AE7560521ACACC0E00EFD3D4 /* Images.xcassets */; };
 		AE7560561ACACC0E00EFD3D4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE7560541ACACC0E00EFD3D4 /* Main.storyboard */; };
 		AE7560621ACACC0E00EFD3D4 /* SwiftPerformanceBenchmarkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7560611ACACC0E00EFD3D4 /* SwiftPerformanceBenchmarkTests.swift */; };
+		AE75606E1ACB178300EFD3D4 /* ComputeRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE75606D1ACB178300EFD3D4 /* ComputeRecord.swift */; };
+		AE7560701ACB21DC00EFD3D4 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE75606F1ACB21DC00EFD3D4 /* Utils.swift */; };
+		AE7560731ACB398100EFD3D4 /* CalcPrimesObjC.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7560721ACB398100EFD3D4 /* CalcPrimesObjC.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +37,10 @@
 		AE75605B1ACACC0E00EFD3D4 /* SwiftPerformanceBenchmarkTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftPerformanceBenchmarkTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE7560601ACACC0E00EFD3D4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AE7560611ACACC0E00EFD3D4 /* SwiftPerformanceBenchmarkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftPerformanceBenchmarkTests.swift; sourceTree = "<group>"; };
+		AE75606D1ACB178300EFD3D4 /* ComputeRecord.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComputeRecord.swift; sourceTree = "<group>"; };
+		AE75606F1ACB21DC00EFD3D4 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		AE7560711ACB398100EFD3D4 /* SwiftPerformanceBenchmark-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SwiftPerformanceBenchmark-Bridging-Header.h"; sourceTree = "<group>"; };
+		AE7560721ACB398100EFD3D4 /* CalcPrimesObjC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CalcPrimesObjC.m; path = SwiftPerformanceBenchmark/CalcPrimesObjC.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,9 +64,11 @@
 		AE7560401ACACC0E00EFD3D4 = {
 			isa = PBXGroup;
 			children = (
+				AE7560721ACB398100EFD3D4 /* CalcPrimesObjC.m */,
 				AE75604B1ACACC0E00EFD3D4 /* SwiftPerformanceBenchmark */,
 				AE75605E1ACACC0E00EFD3D4 /* SwiftPerformanceBenchmarkTests */,
 				AE75604A1ACACC0E00EFD3D4 /* Products */,
+				AE7560711ACB398100EFD3D4 /* SwiftPerformanceBenchmark-Bridging-Header.h */,
 			);
 			sourceTree = "<group>";
 		};
@@ -76,10 +85,12 @@
 			isa = PBXGroup;
 			children = (
 				AE75604E1ACACC0E00EFD3D4 /* AppDelegate.swift */,
+				AE75606D1ACB178300EFD3D4 /* ComputeRecord.swift */,
 				AE7560501ACACC0E00EFD3D4 /* ViewController.swift */,
 				AE7560521ACACC0E00EFD3D4 /* Images.xcassets */,
 				AE7560541ACACC0E00EFD3D4 /* Main.storyboard */,
 				AE75604C1ACACC0E00EFD3D4 /* Supporting Files */,
+				AE75606F1ACB21DC00EFD3D4 /* Utils.swift */,
 			);
 			path = SwiftPerformanceBenchmark;
 			sourceTree = "<group>";
@@ -208,8 +219,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AE75606E1ACB178300EFD3D4 /* ComputeRecord.swift in Sources */,
 				AE7560511ACACC0E00EFD3D4 /* ViewController.swift in Sources */,
 				AE75604F1ACACC0E00EFD3D4 /* AppDelegate.swift in Sources */,
+				AE7560701ACB21DC00EFD3D4 /* Utils.swift in Sources */,
+				AE7560731ACB398100EFD3D4 /* CalcPrimesObjC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -324,10 +338,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = SwiftPerformanceBenchmark/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "SwiftPerformanceBenchmark-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -335,10 +352,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = SwiftPerformanceBenchmark/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "SwiftPerformanceBenchmark-Bridging-Header.h";
 			};
 			name = Release;
 		};

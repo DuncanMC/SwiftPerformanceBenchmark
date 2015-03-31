@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="6198" systemVersion="14A297b" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1514" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6198"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6751"/>
     </dependencies>
     <scenes>
         <!--Application-->
@@ -641,20 +641,21 @@
                         <outlet property="delegate" destination="Voe-Tx-rLC" id="PrD-fu-P6m"/>
                     </connections>
                 </application>
-                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModuleProvider="target"/>
+                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="SwiftPerformanceBenchmark" customModuleProvider="target"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="75" y="0.0"/>
         </scene>
-        <!--Window Controller - Window-->
+        <!--Window Controller-->
         <scene sceneID="R2V-B0-nI4">
             <objects>
                 <windowController id="B8D-0N-5wS" sceneMemberID="viewController">
-                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
+                    <window key="window" title="Prime Calculator" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-                        <rect key="contentRect" x="196" y="240" width="480" height="270"/>
+                        <rect key="contentRect" x="604" y="588" width="560" height="350"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
+                        <value key="minSize" type="size" width="560" height="350"/>
                     </window>
                     <connections>
                         <segue destination="XfG-lQ-9wD" kind="relationship" relationship="window.shadowedContentViewController" id="cq2-FE-JQM"/>
@@ -667,13 +668,268 @@
         <!--View Controller-->
         <scene sceneID="hIz-AP-VOD">
             <objects>
-                <viewController id="XfG-lQ-9wD" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="XfG-lQ-9wD" customClass="ViewController" customModule="SwiftPerformanceBenchmark" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="m2S-Jp-Qdl">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                        <rect key="frame" x="0.0" y="0.0" width="540" height="320"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="PMT-RB-2xy">
+                                <rect key="frame" x="3" y="283" width="149" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="# of primes to calculate" id="gaP-sx-ppl">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="WPT-d9-SsY">
+                                <rect key="frame" x="175" y="281" width="150" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="TPg-Ex-30w"/>
+                                    <constraint firstAttribute="height" constant="22" id="Xh2-gh-by6"/>
+                                </constraints>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="right" title="7" drawsBackground="YES" id="c9e-Ct-zP2">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                                <connections>
+                                    <binding destination="XfG-lQ-9wD" name="value" keyPath="self.theComputeSettings.totalToCalculate" id="CcR-Ko-gzN"/>
+                                </connections>
+                            </textField>
+                            <progressIndicator maxValue="1000" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="97F-NP-OKH">
+                                <rect key="frame" x="10" y="60" width="520" height="41"/>
+                            </progressIndicator>
+                            <box autoresizesSubviews="NO" horizontalCompressionResistancePriority="800" verticalCompressionResistancePriority="800" title="Results" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="FR1-9h-dTb">
+                                <rect key="frame" x="17" y="101" width="506" height="170"/>
+                                <view key="contentView">
+                                    <rect key="frame" x="1" y="1" width="504" height="154"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="jwP-Pg-807" userLabel="SwiftPrimesSec">
+                                            <rect key="frame" x="157" y="57" width="150" height="25"/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="right" title="10,000,000" drawsBackground="YES" id="uGG-N2-5fR">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                            <connections>
+                                                <binding destination="XfG-lQ-9wD" name="value" keyPath="self.theComputeSettings.swift_primesPerSecond" id="Bgj-5o-XJ2"/>
+                                            </connections>
+                                        </textField>
+                                        <textField verticalHuggingPriority="750" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FS6-cu-CK7" userLabel="ObjCCurrentTotal">
+                                            <rect key="frame" x="312" y="92" width="150" height="25"/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="right" title="10,000,000" drawsBackground="YES" id="Z9f-w5-T2b">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                            <connections>
+                                                <binding destination="XfG-lQ-9wD" name="value" keyPath="self.theComputeSettings.objC_totalCalculated" id="jRH-ug-u7Z"/>
+                                            </connections>
+                                        </textField>
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ctt-oY-jr0">
+                                            <rect key="frame" x="5" y="98" width="149" height="17"/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Current total calculated" id="EOH-KH-w30">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="gwc-7Z-hWu" userLabel="SwiftTotalTime">
+                                            <rect key="frame" x="157" y="22" width="150" height="25"/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="right" title="950H:57M:12.34S" drawsBackground="YES" id="akD-ey-Ah0">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <textField verticalHuggingPriority="750" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="L6m-7H-OGq" userLabel="ObjCTotalTime">
+                                            <rect key="frame" x="312" y="22" width="150" height="25"/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="right" title="10,000,000" drawsBackground="YES" id="S7Q-J9-LH7">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <textField verticalHuggingPriority="750" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jJu-aJ-YaL" userLabel="ObjCPrimesSec">
+                                            <rect key="frame" x="312" y="57" width="150" height="25"/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="right" title="10,000,000" drawsBackground="YES" id="wfB-Ty-0tM">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                            <connections>
+                                                <binding destination="XfG-lQ-9wD" name="value" keyPath="self.theComputeSettings.objC_primesPerSecond" id="lUF-kX-AmR"/>
+                                            </connections>
+                                        </textField>
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="SPH-vP-fLJ">
+                                            <rect key="frame" x="5" y="29" width="64" height="17"/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Total time" id="bGI-4D-X53">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="F9S-HS-QaZ">
+                                            <rect key="frame" x="5" y="66" width="97" height="17"/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Primes/second" id="MbE-Hg-NgO">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="FZ3-OK-W3D">
+                                            <rect key="frame" x="215" y="132" width="35" height="17"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="31" id="b5i-6w-vCC"/>
+                                                <constraint firstAttribute="height" constant="17" id="piA-sh-I8s"/>
+                                            </constraints>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Swift" id="hsK-67-y1H">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="k9q-Ca-cPF">
+                                            <rect key="frame" x="346" y="132" width="82" height="17"/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Objective-C" id="xzp-uV-jIT">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="izb-a7-myh" userLabel="SwiftTotal">
+                                            <rect key="frame" x="157" y="92" width="150" height="25"/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="right" title="10,000,000" drawsBackground="YES" id="4SD-hc-Jgn">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                            <connections>
+                                                <binding destination="XfG-lQ-9wD" name="value" keyPath="self.theComputeSettings.swift_totalCalculated" id="5fF-J7-Zgg"/>
+                                            </connections>
+                                        </textField>
+                                    </subviews>
+                                </view>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="gwc-7Z-hWu" secondAttribute="bottom" constant="19" id="362-eG-fJV"/>
+                                    <constraint firstItem="jJu-aJ-YaL" firstAttribute="centerY" secondItem="jwP-Pg-807" secondAttribute="centerY" id="5ts-SJ-juz"/>
+                                    <constraint firstItem="izb-a7-myh" firstAttribute="top" secondItem="FZ3-OK-W3D" secondAttribute="bottom" constant="15" id="6Gq-qP-gJC"/>
+                                    <constraint firstAttribute="height" constant="166" id="8QU-mA-PoU"/>
+                                    <constraint firstItem="jwP-Pg-807" firstAttribute="top" secondItem="izb-a7-myh" secondAttribute="bottom" constant="10" id="AbE-Op-IEx"/>
+                                    <constraint firstItem="k9q-Ca-cPF" firstAttribute="centerX" secondItem="FS6-cu-CK7" secondAttribute="centerX" id="BFg-k5-t4s"/>
+                                    <constraint firstItem="izb-a7-myh" firstAttribute="width" secondItem="FS6-cu-CK7" secondAttribute="width" id="CQX-mE-xs7"/>
+                                    <constraint firstItem="ctt-oY-jr0" firstAttribute="centerY" secondItem="izb-a7-myh" secondAttribute="centerY" constant="-2" id="Cbc-ab-Zwa"/>
+                                    <constraint firstItem="k9q-Ca-cPF" firstAttribute="centerY" secondItem="FZ3-OK-W3D" secondAttribute="centerY" id="Cfk-mH-0A3"/>
+                                    <constraint firstItem="ctt-oY-jr0" firstAttribute="centerY" secondItem="FS6-cu-CK7" secondAttribute="centerY" constant="-2" id="DTi-xT-MY8"/>
+                                    <constraint firstItem="gwc-7Z-hWu" firstAttribute="centerX" secondItem="jwP-Pg-807" secondAttribute="centerX" id="E79-mH-4lA"/>
+                                    <constraint firstItem="izb-a7-myh" firstAttribute="height" secondItem="FS6-cu-CK7" secondAttribute="height" id="Eon-K6-1ry"/>
+                                    <constraint firstItem="gwc-7Z-hWu" firstAttribute="centerY" secondItem="L6m-7H-OGq" secondAttribute="centerY" id="J9w-aA-jBS"/>
+                                    <constraint firstItem="izb-a7-myh" firstAttribute="width" secondItem="jwP-Pg-807" secondAttribute="width" id="Jtw-tg-xle"/>
+                                    <constraint firstItem="izb-a7-myh" firstAttribute="height" secondItem="jJu-aJ-YaL" secondAttribute="height" id="NQ9-tj-hVC"/>
+                                    <constraint firstItem="FZ3-OK-W3D" firstAttribute="top" secondItem="FR1-9h-dTb" secondAttribute="top" constant="20" id="SGn-YD-5Rh"/>
+                                    <constraint firstItem="izb-a7-myh" firstAttribute="width" secondItem="gwc-7Z-hWu" secondAttribute="width" id="SOv-cO-8Js"/>
+                                    <constraint firstItem="izb-a7-myh" firstAttribute="height" secondItem="L6m-7H-OGq" secondAttribute="height" id="VOY-ft-ww8"/>
+                                    <constraint firstItem="SPH-vP-fLJ" firstAttribute="leading" secondItem="F9S-HS-QaZ" secondAttribute="leading" id="YOj-pR-G0l"/>
+                                    <constraint firstItem="jJu-aJ-YaL" firstAttribute="centerY" secondItem="F9S-HS-QaZ" secondAttribute="centerY" constant="5" id="Ylx-iV-kB8"/>
+                                    <constraint firstItem="izb-a7-myh" firstAttribute="height" secondItem="jwP-Pg-807" secondAttribute="height" id="ZaC-Xq-Tk2"/>
+                                    <constraint firstItem="gwc-7Z-hWu" firstAttribute="top" secondItem="jwP-Pg-807" secondAttribute="bottom" constant="10" id="dLs-qS-6ai"/>
+                                    <constraint firstItem="ctt-oY-jr0" firstAttribute="leading" secondItem="FR1-9h-dTb" secondAttribute="leading" constant="5" id="ej2-Ak-f88"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="500" id="ewT-Wa-ApP"/>
+                                    <constraint firstItem="gwc-7Z-hWu" firstAttribute="centerX" secondItem="izb-a7-myh" secondAttribute="centerX" id="gih-vq-RlH"/>
+                                    <constraint firstItem="FZ3-OK-W3D" firstAttribute="centerX" secondItem="izb-a7-myh" secondAttribute="centerX" id="i7C-ju-mcp"/>
+                                    <constraint firstItem="izb-a7-myh" firstAttribute="width" secondItem="jJu-aJ-YaL" secondAttribute="width" id="inb-b5-WTz"/>
+                                    <constraint firstItem="izb-a7-myh" firstAttribute="width" secondItem="L6m-7H-OGq" secondAttribute="width" id="kVS-TJ-gZD"/>
+                                    <constraint firstItem="izb-a7-myh" firstAttribute="leading" secondItem="ctt-oY-jr0" secondAttribute="trailing" constant="5" id="kmB-nx-Hqo"/>
+                                    <constraint firstItem="FS6-cu-CK7" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="izb-a7-myh" secondAttribute="trailing" constant="5" id="lEN-aI-NVP"/>
+                                    <constraint firstItem="L6m-7H-OGq" firstAttribute="centerX" secondItem="jJu-aJ-YaL" secondAttribute="centerX" id="oXq-dh-QR9"/>
+                                    <constraint firstItem="gwc-7Z-hWu" firstAttribute="centerY" secondItem="SPH-vP-fLJ" secondAttribute="centerY" constant="3" id="sE7-Gl-uoc"/>
+                                    <constraint firstItem="k9q-Ca-cPF" firstAttribute="centerX" secondItem="jJu-aJ-YaL" secondAttribute="centerX" id="tMq-CB-NGE"/>
+                                    <constraint firstItem="izb-a7-myh" firstAttribute="height" secondItem="gwc-7Z-hWu" secondAttribute="height" id="tkH-49-xEt"/>
+                                    <constraint firstItem="k9q-Ca-cPF" firstAttribute="centerX" secondItem="L6m-7H-OGq" secondAttribute="centerX" id="uOy-9Q-Ucz"/>
+                                    <constraint firstItem="SPH-vP-fLJ" firstAttribute="leading" secondItem="ctt-oY-jr0" secondAttribute="leading" id="wPe-Ln-KUA"/>
+                                    <constraint firstItem="L6m-7H-OGq" firstAttribute="centerX" secondItem="FS6-cu-CK7" secondAttribute="centerX" id="x3J-mJ-dRc"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="137" id="zNa-RB-oow"/>
+                                </constraints>
+                                <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+                                <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </box>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="WGL-Jb-YNF">
+                                <rect key="frame" x="19" y="13" width="98" height="32"/>
+                                <buttonCell key="cell" type="push" title="Calculate" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="izB-ym-Ls9">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                    <string key="keyEquivalent" base64-UTF8="YES">
+DQ
+</string>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="CalculatePrimes:" target="XfG-lQ-9wD" id="KvA-Yn-YVW"/>
+                                </connections>
+                            </button>
+                            <button translatesAutoresizingMaskIntoConstraints="NO" id="uzc-rR-9KA">
+                                <rect key="frame" x="173" y="21" width="121" height="18"/>
+                                <buttonCell key="cell" type="check" title="Compute (Swift)" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Ams-M6-FsI">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="showSettings:" target="XfG-lQ-9wD" id="zjU-N5-JWp"/>
+                                    <binding destination="XfG-lQ-9wD" name="value" keyPath="self.theComputeSettings.doCalculationsInSwift" id="j6i-1K-vkT"/>
+                                </connections>
+                            </button>
+                            <button ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5aM-1H-raY">
+                                <rect key="frame" x="328" y="21" width="127" height="18"/>
+                                <buttonCell key="cell" type="check" title="Compute (Obj-C)" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Eq2-Lv-HVy">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="showSettings:" target="XfG-lQ-9wD" id="wmA-9u-LoC"/>
+                                    <binding destination="XfG-lQ-9wD" name="value" keyPath="self.theComputeSettings.doCalculationsInObjC" id="eTD-sV-p7A"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="SPH-vP-fLJ" firstAttribute="leading" secondItem="WGL-Jb-YNF" secondAttribute="leading" id="0Ph-ho-kmd"/>
+                            <constraint firstItem="97F-NP-OKH" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="10" id="28l-uJ-cV8"/>
+                            <constraint firstItem="PMT-RB-2xy" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="20" id="E1f-UE-lKc"/>
+                            <constraint firstAttribute="trailing" secondItem="97F-NP-OKH" secondAttribute="trailing" constant="10" id="Eva-g7-xJi"/>
+                            <constraint firstItem="gwc-7Z-hWu" firstAttribute="leading" secondItem="uzc-rR-9KA" secondAttribute="leading" id="IcK-Dn-lYt"/>
+                            <constraint firstItem="uzc-rR-9KA" firstAttribute="centerY" secondItem="WGL-Jb-YNF" secondAttribute="centerY" id="Jdm-Y4-4XC"/>
+                            <constraint firstItem="WGL-Jb-YNF" firstAttribute="top" secondItem="97F-NP-OKH" secondAttribute="bottom" constant="20" id="Kg1-qp-xPQ"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="97F-NP-OKH" secondAttribute="trailing" constant="10" id="KtP-Mh-pBd"/>
+                            <constraint firstItem="WPT-d9-SsY" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="PMT-RB-2xy" secondAttribute="trailing" constant="5" id="Ojm-g5-gxe"/>
+                            <constraint firstItem="97F-NP-OKH" firstAttribute="top" secondItem="FR1-9h-dTb" secondAttribute="bottom" constant="5" id="SMX-Uo-fIE"/>
+                            <constraint firstAttribute="centerX" secondItem="FR1-9h-dTb" secondAttribute="centerX" id="SgM-X4-NJJ"/>
+                            <constraint firstItem="5aM-1H-raY" firstAttribute="leading" secondItem="L6m-7H-OGq" secondAttribute="leading" id="jff-8Z-17p"/>
+                            <constraint firstItem="WPT-d9-SsY" firstAttribute="height" secondItem="izb-a7-myh" secondAttribute="height" id="jzW-P8-lLZ"/>
+                            <constraint firstAttribute="bottom" secondItem="WGL-Jb-YNF" secondAttribute="bottom" constant="20" id="k8Z-0O-b95"/>
+                            <constraint firstItem="WPT-d9-SsY" firstAttribute="centerY" secondItem="PMT-RB-2xy" secondAttribute="centerY" id="kwB-Qh-Lfs"/>
+                            <constraint firstItem="97F-NP-OKH" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="10" id="lLe-kA-leo"/>
+                            <constraint firstItem="uzc-rR-9KA" firstAttribute="centerY" secondItem="5aM-1H-raY" secondAttribute="centerY" id="mWC-67-2ge"/>
+                            <constraint firstItem="WPT-d9-SsY" firstAttribute="leading" secondItem="izb-a7-myh" secondAttribute="leading" id="sqP-D6-U1S"/>
+                            <constraint firstItem="FR1-9h-dTb" firstAttribute="top" secondItem="WPT-d9-SsY" secondAttribute="bottom" constant="10" id="xbT-ek-Ers"/>
+                            <constraint firstItem="PMT-RB-2xy" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="5" id="y9m-WU-v7d"/>
+                            <constraint firstItem="WPT-d9-SsY" firstAttribute="width" secondItem="izb-a7-myh" secondAttribute="width" id="zQU-rd-H7U"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="calculateButton" destination="WGL-Jb-YNF" id="PDp-rg-by3"/>
+                        <outlet property="computeInObjCCheckbox" destination="WGL-Jb-YNF" id="kuK-Oh-x5a"/>
+                        <outlet property="computeInSwiftCheckbox" destination="uzc-rR-9KA" id="NXJ-Uc-aJb"/>
+                        <outlet property="primesPerSecObjCField" destination="jJu-aJ-YaL" id="A73-U0-r1c"/>
+                        <outlet property="primesPerSecSwiftField" destination="jwP-Pg-807" id="9ZJ-1s-qyw"/>
+                        <outlet property="primesToCalculateField" destination="WPT-d9-SsY" id="Qkw-Lv-Bvf"/>
+                        <outlet property="progressIndicator" destination="97F-NP-OKH" id="xM4-Mf-jbe"/>
+                        <outlet property="totalCalcdObjCField" destination="FS6-cu-CK7" id="O2M-Ry-NVA"/>
+                        <outlet property="totalCalcdSwiftField" destination="izb-a7-myh" id="Z4D-ZN-NNI"/>
+                        <outlet property="totalTimeObjCField" destination="L6m-7H-OGq" id="OK8-Mc-91I"/>
+                        <outlet property="totalTimeSwiftField" destination="gwc-7Z-hWu" id="SFA-rB-kF5"/>
+                    </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <userDefaultsController representsSharedInstance="YES" id="Qrf-jG-Qhe"/>
             </objects>
             <point key="canvasLocation" x="75" y="655"/>
         </scene>
