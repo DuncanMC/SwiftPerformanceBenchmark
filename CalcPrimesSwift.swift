@@ -33,7 +33,7 @@ class CalcPrimesSwift: NSObject, CalcPrimesProtocol
       primes.reserveCapacity(requiredComputeRecord.totalToCalculate)
       
       primes.append(2)
-
+      
       while primes.count < totalCount
       {
         isPrime = true
@@ -63,7 +63,7 @@ class CalcPrimesSwift: NSObject, CalcPrimesProtocol
         }
         //Move on to the next (odd) number.
         candidate += 2;
-
+        
       }
       self.updateTotal(primes.count,
         theComputeRecord: requiredComputeRecord,
@@ -71,8 +71,10 @@ class CalcPrimesSwift: NSObject, CalcPrimesProtocol
     }
     //println("Checking for swift completion block")
     
-    for var index = primes.count-101; index < primes.count; index++
-{
+    //print the last 10 primes calculated
+    println("\nPrimes calculated in Swift")
+    for var index = primes.count-11; index < primes.count; index++
+    {
       var aPrime = primes[index]
       println("Prime[\(index)] = \(aPrime)")
     }

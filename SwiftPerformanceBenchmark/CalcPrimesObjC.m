@@ -92,8 +92,10 @@ theCalcPrimesCompletionBlock;
         inComputeRecord: aComputeRecord
  withUpdateDisplayBlock: theUpdateDisplayBlock];
   
-  for (int index = prime_count - 101; index< prime_count; index++)
-    NSLog(@"Prime[%d] = %d", index, primes[index]);
+  //print the last 10 primes calculated
+  printf("\nPrimes calculated in Objective-C:\n");
+  for (int index = prime_count - 11; index< prime_count; index++)
+    printf("Prime[%d] = %d\n", index, primes[index]);
   
   if (theCalcPrimesCompletionBlock != nil)
     dispatch_async(dispatch_get_main_queue(),^
