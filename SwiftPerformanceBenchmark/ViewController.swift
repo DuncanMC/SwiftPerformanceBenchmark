@@ -100,7 +100,31 @@ class ViewController: NSViewController
           theComputeSettings.doCalculationsInObjC)
     if !calculationsRunning
     {
-      statusMessage = "Calculations complete."
+      if theComputeSettings.swift_totalTime > 0  && theComputeSettings.objC_totalTime > 0
+      {
+        if theComputeSettings.swift_totalTime > theComputeSettings.objC_totalTime
+        {
+          let valueString = String(format: "%.2f",
+            (theComputeSettings.swift_totalTime /
+            theComputeSettings.objC_totalTime))
+          statusMessage = "Swift took \(valueString) times longer."
+        }
+        else
+        {
+          let valueString = String(format: "%.2f",
+            (theComputeSettings.objC_totalTime /
+             theComputeSettings.swift_totalTime ))
+          statusMessage = "Objective-C took \(valueString) times longer."
+          
+        }
+        
+      }
+      else
+      {
+        statusMessage = "Calculations complete."
+      }
+      
+      
       progressIndicator.doubleValue = 0
     }
   }

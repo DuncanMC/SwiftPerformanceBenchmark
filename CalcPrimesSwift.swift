@@ -12,6 +12,7 @@ private let _theCalcPrimesSwiftInstance: CalcPrimesSwift = CalcPrimesSwift()
 
 class CalcPrimesSwift:  NSObject, CalcPrimesProtocol
 {
+  var foo: Array<Int>?
   var startTime: NSTimeInterval = 0
   var theComputeRecord: ComputeRecord?
   

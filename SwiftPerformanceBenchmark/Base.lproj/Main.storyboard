@@ -895,12 +895,12 @@ DQ
                                 </connections>
                             </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="7aR-Ub-vHO">
-                                <rect key="frame" x="161" y="90" width="219" height="17"/>
+                                <rect key="frame" x="143" y="90" width="254" height="17"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="17" id="Aik-bF-nHa"/>
-                                    <constraint firstAttribute="width" constant="215" id="YUK-CB-6fR"/>
+                                    <constraint firstAttribute="width" constant="250" id="YUK-CB-6fR"/>
                                 </constraints>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Calculating primes in Objective-C" id="r3Z-48-jKH">
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Objective-C took 5.4 times longer" id="r3Z-48-jKH">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -910,6 +910,7 @@ DQ
                         <constraints>
                             <constraint firstItem="SPH-vP-fLJ" firstAttribute="leading" secondItem="WGL-Jb-YNF" secondAttribute="leading" id="0Ph-ho-kmd"/>
                             <constraint firstItem="97F-NP-OKH" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="10" id="28l-uJ-cV8"/>
+                            <constraint firstAttribute="centerX" secondItem="7aR-Ub-vHO" secondAttribute="centerX" id="9Kx-j1-fNT"/>
                             <constraint firstItem="PMT-RB-2xy" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="20" id="E1f-UE-lKc"/>
                             <constraint firstAttribute="trailing" secondItem="97F-NP-OKH" secondAttribute="trailing" constant="10" id="Eva-g7-xJi"/>
                             <constraint firstItem="gwc-7Z-hWu" firstAttribute="leading" secondItem="uzc-rR-9KA" secondAttribute="leading" id="IcK-Dn-lYt"/>
