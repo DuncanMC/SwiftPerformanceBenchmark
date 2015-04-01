@@ -10,12 +10,13 @@ import Foundation
 
 private let _theCalcPrimesSwiftInstance: CalcPrimesSwift = CalcPrimesSwift()
 
-class CalcPrimesSwift: NSObject, CalcPrimesProtocol
+class CalcPrimesSwift:  NSObject, CalcPrimesProtocol
 {
   var startTime: NSTimeInterval = 0
   var theComputeRecord: ComputeRecord?
-  class func sharedInstance() -> CalcPrimesProtocol
-  {
+  
+    class func sharedInstance() -> CalcPrimesProtocol!
+    {
     return _theCalcPrimesSwiftInstance
   }
   

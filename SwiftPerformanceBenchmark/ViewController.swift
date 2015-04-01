@@ -111,18 +111,18 @@ class ViewController: NSViewController
   {
     //println("In \(__FUNCTION__)")
     primesToCalculateField.window?.makeFirstResponder(nil)
-    progressIndicator.doubleValue = 0;
+    progressIndicator.doubleValue = 0
     calculateButton.enabled = false
     
     //This code calculates primes using the Objective-C code.
-    theComputeSettings.objC_totalCalculated = 0;
-    theComputeSettings.objC_primesPerSecond = 0;
-    theComputeSettings.objC_totalTime = 0;
+    theComputeSettings.objC_totalCalculated = 0
+    theComputeSettings.objC_primesPerSecond = 0
+    theComputeSettings.objC_totalTime = 0
 
-    theComputeSettings.swift_totalCalculated = 0;
-    theComputeSettings.swift_primesPerSecond = 0;
-    theComputeSettings.swift_totalTime = 0;
-    calculationsRunning = true;
+    theComputeSettings.swift_totalCalculated = 0
+    theComputeSettings.swift_primesPerSecond = 0
+    theComputeSettings.swift_totalTime = 0
+    calculationsRunning = true
     
     if theComputeSettings.doCalculationsInObjC
     {
@@ -134,7 +134,7 @@ class ViewController: NSViewController
             requiredSelf.statusMessage = "Calculating primes in Objective-C"
             requiredSelf.progressIndicator.doubleValue = 0
 
-            let theCalcPrimesObjC:CalcPrimesProtocol = CalcPrimesObjC.sharedInstance();
+            let theCalcPrimesObjC:CalcPrimesProtocol = CalcPrimesObjC.sharedInstance()
             
             theCalcPrimesObjC.calcPrimesWithComputeRecord(requiredSelf.theComputeSettings,
               withUpdateDisplayBlock:
@@ -157,7 +157,7 @@ class ViewController: NSViewController
                 }
                 else
                 {
-                  requiredSelf.calculationsRunning = false;
+                  requiredSelf.calculationsRunning = false
                   requiredSelf.showSettings(requiredSelf)
                 }
               }
@@ -176,7 +176,7 @@ class ViewController: NSViewController
             requiredSelf.statusMessage = "Calculating primes in Swift"
 
             requiredSelf.progressIndicator.doubleValue = 0
-            let theCalcPrimesSwift:CalcPrimesProtocol = CalcPrimesSwift.sharedInstance();
+            let theCalcPrimesSwift:CalcPrimesProtocol = CalcPrimesSwift.sharedInstance()
             
             theCalcPrimesSwift.calcPrimesWithComputeRecord(requiredSelf.theComputeSettings,
               withUpdateDisplayBlock:
@@ -199,7 +199,7 @@ class ViewController: NSViewController
                 }
                 else
                 {
-                  requiredSelf.calculationsRunning = false;
+                  requiredSelf.calculationsRunning = false
                   requiredSelf.showSettings(requiredSelf)
 
                 }

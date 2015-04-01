@@ -9,7 +9,7 @@ It demonstrates a number of different techniques:
 
  * Definining classes in both Swift and Objective-C using a common protocol so that they can be used interchangeably. 
  * Using Mac OS Cocoa Bindings to attach a window's UI elements directly to properties of an object.
- * Running time-consuming tasks in the background with GCD
+ * Running time-consuming tasks in the background with GCD and reporting status back on the main thread.
 
 
 It also uncovers a limitation with the current version of Swift (1.1?) It seems that you can't use KVO or Cocoa bindings to observe properties of an object, or link them with Mac OS Cocoa Bindings unless you write extra code. Cocoa bindings work perfectly when you change the property values from Objective-C, but the KVO methods fail to fire when you change the property values from Swift code.
