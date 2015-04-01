@@ -16,8 +16,7 @@ typedef void (^calcPrimesCompletionBlock)(void);
 
 - (void) calcPrimesWithComputeRecord: (ComputeRecord *) aComputeRecord
               withUpdateDisplayBlock: (updateDisplayBlock) theUpdateDisplayBlock
-andCompletionBlock: (calcPrimesCompletionBlock)
-theCalcPrimesCompletionBlock;
+                  andCompletionBlock: (calcPrimesCompletionBlock) theCalcPrimesCompletionBlock;
 @optional
 + (NSObject <CalcPrimesProtocol> *) sharedInstance;
 

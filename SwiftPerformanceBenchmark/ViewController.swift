@@ -20,15 +20,10 @@ class ViewController: NSViewController
   
   @IBOutlet weak var primesToCalculateField: NSTextField!
   
-  @IBOutlet weak var totalCalcdSwiftField: NSTextField!
-  @IBOutlet weak var primesPerSecSwiftField: NSTextField!
   @IBOutlet weak var totalTimeSwiftField: NSTextField!
   
-  @IBOutlet weak var totalCalcdObjCField: NSTextField!
-  @IBOutlet weak var primesPerSecObjCField: NSTextField!
   @IBOutlet weak var totalTimeObjCField: NSTextField!
   
-  @IBOutlet weak var computeInSwiftCheckbox: NSButton!
   @IBOutlet weak var computeInObjCCheckbox: NSButton!
   
   @IBOutlet weak var calculateButton: NSButton!

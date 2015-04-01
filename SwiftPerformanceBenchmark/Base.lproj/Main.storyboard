@@ -891,7 +891,6 @@ DQ
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
-                                    <action selector="showSettings:" target="XfG-lQ-9wD" id="wmA-9u-LoC"/>
                                     <binding destination="XfG-lQ-9wD" name="value" keyPath="self.theComputeSettings.doCalculationsInObjC" id="eTD-sV-p7A"/>
                                 </connections>
                             </button>
@@ -938,14 +937,9 @@ DQ
                     <connections>
                         <outlet property="calculateButton" destination="WGL-Jb-YNF" id="PDp-rg-by3"/>
                         <outlet property="computeInObjCCheckbox" destination="WGL-Jb-YNF" id="kuK-Oh-x5a"/>
-                        <outlet property="computeInSwiftCheckbox" destination="uzc-rR-9KA" id="NXJ-Uc-aJb"/>
-                        <outlet property="primesPerSecObjCField" destination="jJu-aJ-YaL" id="A73-U0-r1c"/>
-                        <outlet property="primesPerSecSwiftField" destination="jwP-Pg-807" id="9ZJ-1s-qyw"/>
                         <outlet property="primesToCalculateField" destination="WPT-d9-SsY" id="Qkw-Lv-Bvf"/>
                         <outlet property="progressIndicator" destination="97F-NP-OKH" id="xM4-Mf-jbe"/>
                         <outlet property="statusLabel" destination="7aR-Ub-vHO" id="q64-1i-XcB"/>
-                        <outlet property="totalCalcdObjCField" destination="FS6-cu-CK7" id="O2M-Ry-NVA"/>
-                        <outlet property="totalCalcdSwiftField" destination="izb-a7-myh" id="Z4D-ZN-NNI"/>
                         <outlet property="totalTimeObjCField" destination="L6m-7H-OGq" id="OK8-Mc-91I"/>
                         <outlet property="totalTimeSwiftField" destination="gwc-7Z-hWu" id="SFA-rB-kF5"/>
                     </connections>
