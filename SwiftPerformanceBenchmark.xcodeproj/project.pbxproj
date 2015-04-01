@@ -14,7 +14,7 @@
 		AE7560621ACACC0E00EFD3D4 /* SwiftPerformanceBenchmarkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7560611ACACC0E00EFD3D4 /* SwiftPerformanceBenchmarkTests.swift */; };
 		AE75606E1ACB178300EFD3D4 /* ComputeRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE75606D1ACB178300EFD3D4 /* ComputeRecord.swift */; };
 		AE7560701ACB21DC00EFD3D4 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE75606F1ACB21DC00EFD3D4 /* Utils.swift */; };
-		AE7560731ACB398100EFD3D4 /* CalcPrimesObjC.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7560721ACB398100EFD3D4 /* CalcPrimesObjC.m */; };
+		AE9AE2471ACB3B8900ADCAD0 /* CalcPrimesObjC.m in Sources */ = {isa = PBXBuildFile; fileRef = AE9AE2461ACB3B8900ADCAD0 /* CalcPrimesObjC.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,8 +39,9 @@
 		AE7560611ACACC0E00EFD3D4 /* SwiftPerformanceBenchmarkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftPerformanceBenchmarkTests.swift; sourceTree = "<group>"; };
 		AE75606D1ACB178300EFD3D4 /* ComputeRecord.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComputeRecord.swift; sourceTree = "<group>"; };
 		AE75606F1ACB21DC00EFD3D4 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
-		AE7560711ACB398100EFD3D4 /* SwiftPerformanceBenchmark-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SwiftPerformanceBenchmark-Bridging-Header.h"; sourceTree = "<group>"; };
-		AE7560721ACB398100EFD3D4 /* CalcPrimesObjC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CalcPrimesObjC.m; path = SwiftPerformanceBenchmark/CalcPrimesObjC.m; sourceTree = "<group>"; };
+		AE7560711ACB398100EFD3D4 /* SwiftPerformanceBenchmark-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SwiftPerformanceBenchmark-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
+		AE9AE2451ACB3B8900ADCAD0 /* CalcPrimesObjC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CalcPrimesObjC.h; path = SwiftPerformanceBenchmark/CalcPrimesObjC.h; sourceTree = "<group>"; };
+		AE9AE2461ACB3B8900ADCAD0 /* CalcPrimesObjC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CalcPrimesObjC.m; path = SwiftPerformanceBenchmark/CalcPrimesObjC.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,11 +65,12 @@
 		AE7560401ACACC0E00EFD3D4 = {
 			isa = PBXGroup;
 			children = (
-				AE7560721ACB398100EFD3D4 /* CalcPrimesObjC.m */,
+				AE9AE2451ACB3B8900ADCAD0 /* CalcPrimesObjC.h */,
+				AE9AE2461ACB3B8900ADCAD0 /* CalcPrimesObjC.m */,
+				AE7560711ACB398100EFD3D4 /* SwiftPerformanceBenchmark-Bridging-Header.h */,
 				AE75604B1ACACC0E00EFD3D4 /* SwiftPerformanceBenchmark */,
 				AE75605E1ACACC0E00EFD3D4 /* SwiftPerformanceBenchmarkTests */,
 				AE75604A1ACACC0E00EFD3D4 /* Products */,
-				AE7560711ACB398100EFD3D4 /* SwiftPerformanceBenchmark-Bridging-Header.h */,
 			);
 			sourceTree = "<group>";
 		};
@@ -223,7 +225,7 @@
 				AE7560511ACACC0E00EFD3D4 /* ViewController.swift in Sources */,
 				AE75604F1ACACC0E00EFD3D4 /* AppDelegate.swift in Sources */,
 				AE7560701ACB21DC00EFD3D4 /* Utils.swift in Sources */,
-				AE7560731ACB398100EFD3D4 /* CalcPrimesObjC.m in Sources */,
+				AE9AE2471ACB3B8900ADCAD0 /* CalcPrimesObjC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -416,6 +418,7 @@
 				AE7560671ACACC0E00EFD3D4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		AE7560681ACACC0E00EFD3D4 /* Build configuration list for PBXNativeTarget "SwiftPerformanceBenchmarkTests" */ = {
 			isa = XCConfigurationList;
@@ -424,6 +427,7 @@
 				AE75606A1ACACC0E00EFD3D4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

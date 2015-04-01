@@ -12,12 +12,12 @@ import Cocoa
 class ViewController: NSViewController
 {
   
-  weak var progressTimer: NSTimer?
+  //weak var progressTimer: NSTimer?
   //-------------------------------------------------------------------------------------------------------
   // MARK: - IBOutlets -
   //-------------------------------------------------------------------------------------------------------
-
-
+  
+  
   @IBOutlet weak var primesToCalculateField: NSTextField!
   
   @IBOutlet weak var totalCalcdSwiftField: NSTextField!
@@ -33,11 +33,11 @@ class ViewController: NSViewController
   
   @IBOutlet weak var calculateButton: NSButton!
   @IBOutlet weak var progressIndicator: NSProgressIndicator!
- 
+  
   //-------------------------------------------------------------------------------------------------------
   // MARK: - Other Properties -
   //-------------------------------------------------------------------------------------------------------
-
+  var calculationsRunning: Bool = false
   var theComputeSettings: ComputeRecord = ComputeRecord()
     {
     didSet(oldValue)
@@ -47,9 +47,9 @@ class ViewController: NSViewController
   }
   
   //-------------------------------------------------------------------------------------------------------
-
+  
   var foo: Int = 12
-
+  
   //-------------------------------------------------------------------------------------------------------
   
   var startTime: NSTimeInterval?
@@ -62,18 +62,18 @@ class ViewController: NSViewController
   {
     self.showSettings(self)
     super.viewDidLoad()
-
+    
     // Do any additional setup after loading the view.
   }
-
+  
   //-------------------------------------------------------------------------------------------------------
-
+  
   override var representedObject: AnyObject? {
     didSet {
-    // Update the view, if already loaded.
+      // Update the view, if already loaded.
     }
   }
-
+  
   //-------------------------------------------------------------------------------------------------------
   // MARK: - IBAction methods -
   //-------------------------------------------------------------------------------------------------------
@@ -83,27 +83,12 @@ class ViewController: NSViewController
     totalTimeSwiftField.stringValue = intervalAsHHMMSS(theComputeSettings.swift_totalTime)
     totalTimeObjCField.stringValue = intervalAsHHMMSS(theComputeSettings.objC_totalTime)
     calculateButton.enabled =
-      progressTimer == nil &&
+      !calculationsRunning &&
       (
-      theComputeSettings.doCalculationsInSwift ||
-      theComputeSettings.doCalculationsInObjC)
+        theComputeSettings.doCalculationsInSwift ||
+          theComputeSettings.doCalculationsInObjC)
   }
   
-  //-------------------------------------------------------------------------------------------------------
-  
-  func updateProgress(timer: NSTimer)
-  {
-    //println("In \(__FUNCTION__)")
-    progressIndicator.doubleValue += progressIndicator.maxValue/25.0
-    if progressIndicator.doubleValue >= progressIndicator.maxValue
-    {
-      progressIndicator.doubleValue = 0;
-      progressTimer?.invalidate()
-      progressTimer = nil
-      self.showSettings(self)
-    }
-  }
-
   //-------------------------------------------------------------------------------------------------------
   
   @IBAction func CalculatePrimes(sender: NSButton)
@@ -111,14 +96,36 @@ class ViewController: NSViewController
     println("In \(__FUNCTION__)")
     progressIndicator.doubleValue = 0;
     calculateButton.enabled = false
-
-    progressTimer = NSTimer.scheduledTimerWithTimeInterval(
-      0.1,
-      target: self,
-      selector: "updateProgress:",
-    userInfo: nil,
-    repeats: true)
-    let time: NSTimeInterval = NSDate().timeIntervalSinceReferenceDate
+    
+    //This code calculates primes using the Objective-C code.
+    theComputeSettings.objC_totalCalculated = 0;
+    theComputeSettings.objC_primesPerSecond = 0;
+    theComputeSettings.objC_totalTime = 0;
+    calculationsRunning = true;
+    dispatch_async(
+      dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0),
+      {
+        [weak self] in
+        if let requiredSelf = self
+        {
+          let theCalcPrimesObjC = CalcPrimesObjC.sharedCalcPrimesObjC();
+          theCalcPrimesObjC.updateDisplayBlock =
+            {
+              //println("In updateDisplayBlock")
+              let progressValue =  Double(requiredSelf.theComputeSettings.objC_totalCalculated)/Double(requiredSelf.theComputeSettings.totalToCalculate) * Double(1000)
+              
+              if requiredSelf.theComputeSettings.objC_totalCalculated == requiredSelf.theComputeSettings.totalToCalculate
+              {
+                requiredSelf.calculationsRunning = false;
+              }
+              
+              requiredSelf.progressIndicator.doubleValue = progressValue
+              requiredSelf.showSettings(requiredSelf)
+          }
+          theCalcPrimesObjC.calcPrimesWithComputeRecord(requiredSelf.theComputeSettings)
+        }
+      }
+    )
   }
 }
 

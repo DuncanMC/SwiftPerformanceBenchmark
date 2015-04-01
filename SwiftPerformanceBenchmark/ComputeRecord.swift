@@ -21,5 +21,4 @@ class ComputeRecord: NSObject
   var objC_totalCalculated: Int = 0
   var objC_primesPerSecond: Int = 0
   var objC_totalTime: NSTimeInterval = 0.0
-  
 }
