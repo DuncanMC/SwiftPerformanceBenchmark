@@ -105,6 +105,7 @@ class ViewController: NSViewController
           theComputeSettings.doCalculationsInObjC)
     if !calculationsRunning
     {
+      statusMessage = "Calculations complete."
       progressIndicator.doubleValue = 0
     }
   }

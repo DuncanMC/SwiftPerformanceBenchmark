@@ -709,7 +709,7 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="jwP-Pg-807" userLabel="SwiftPrimesSec">
-                                            <rect key="frame" x="157" y="57" width="150" height="25"/>
+                                            <rect key="frame" x="157" y="55" width="150" height="23"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="right" title="10,000,000" drawsBackground="YES" id="uGG-N2-5fR">
                                                 <font key="font" metaFont="system"/>
                                                 <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -719,8 +719,8 @@
                                                 <binding destination="XfG-lQ-9wD" name="value" keyPath="self.theComputeSettings.swift_primesPerSecond" id="Bgj-5o-XJ2"/>
                                             </connections>
                                         </textField>
-                                        <textField verticalHuggingPriority="750" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FS6-cu-CK7" userLabel="ObjCCurrentTotal">
-                                            <rect key="frame" x="312" y="92" width="150" height="25"/>
+                                        <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="FS6-cu-CK7" userLabel="ObjCCurrentTotal">
+                                            <rect key="frame" x="312" y="88" width="150" height="23"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="right" title="10,000,000" drawsBackground="YES" id="Z9f-w5-T2b">
                                                 <font key="font" metaFont="system"/>
                                                 <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -731,7 +731,7 @@
                                             </connections>
                                         </textField>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ctt-oY-jr0">
-                                            <rect key="frame" x="5" y="98" width="149" height="17"/>
+                                            <rect key="frame" x="5" y="93" width="149" height="17"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Current total calculated" id="EOH-KH-w30">
                                                 <font key="font" metaFont="system"/>
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -739,23 +739,23 @@
                                             </textFieldCell>
                                         </textField>
                                         <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="gwc-7Z-hWu" userLabel="SwiftTotalTime">
-                                            <rect key="frame" x="157" y="22" width="150" height="25"/>
+                                            <rect key="frame" x="157" y="22" width="150" height="23"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="right" title="950H:57M:12.34S" drawsBackground="YES" id="akD-ey-Ah0">
                                                 <font key="font" metaFont="system"/>
                                                 <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
-                                        <textField verticalHuggingPriority="750" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="L6m-7H-OGq" userLabel="ObjCTotalTime">
-                                            <rect key="frame" x="312" y="22" width="150" height="25"/>
+                                        <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="L6m-7H-OGq" userLabel="ObjCTotalTime">
+                                            <rect key="frame" x="312" y="22" width="150" height="23"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="right" title="10,000,000" drawsBackground="YES" id="S7Q-J9-LH7">
                                                 <font key="font" metaFont="system"/>
                                                 <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
-                                        <textField verticalHuggingPriority="750" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jJu-aJ-YaL" userLabel="ObjCPrimesSec">
-                                            <rect key="frame" x="312" y="57" width="150" height="25"/>
+                                        <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="jJu-aJ-YaL" userLabel="ObjCPrimesSec">
+                                            <rect key="frame" x="312" y="55" width="150" height="23"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="right" title="10,000,000" drawsBackground="YES" id="wfB-Ty-0tM">
                                                 <font key="font" metaFont="system"/>
                                                 <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -766,7 +766,7 @@
                                             </connections>
                                         </textField>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="SPH-vP-fLJ">
-                                            <rect key="frame" x="5" y="29" width="64" height="17"/>
+                                            <rect key="frame" x="5" y="28" width="64" height="17"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Total time" id="bGI-4D-X53">
                                                 <font key="font" metaFont="system"/>
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -774,7 +774,7 @@
                                             </textFieldCell>
                                         </textField>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="F9S-HS-QaZ">
-                                            <rect key="frame" x="5" y="66" width="97" height="17"/>
+                                            <rect key="frame" x="5" y="63" width="97" height="17"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Primes/second" id="MbE-Hg-NgO">
                                                 <font key="font" metaFont="system"/>
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -782,10 +782,9 @@
                                             </textFieldCell>
                                         </textField>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="FZ3-OK-W3D">
-                                            <rect key="frame" x="215" y="132" width="35" height="17"/>
+                                            <rect key="frame" x="215" y="126" width="35" height="23"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="31" id="b5i-6w-vCC"/>
-                                                <constraint firstAttribute="height" constant="17" id="piA-sh-I8s"/>
                                             </constraints>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Swift" id="hsK-67-y1H">
                                                 <font key="font" metaFont="system"/>
@@ -793,8 +792,8 @@
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
-                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="k9q-Ca-cPF">
-                                            <rect key="frame" x="346" y="132" width="82" height="17"/>
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="k9q-Ca-cPF">
+                                            <rect key="frame" x="346" y="129" width="82" height="17"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Objective-C" id="xzp-uV-jIT">
                                                 <font key="font" metaFont="system"/>
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -802,7 +801,7 @@
                                             </textFieldCell>
                                         </textField>
                                         <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="izb-a7-myh" userLabel="SwiftTotal">
-                                            <rect key="frame" x="157" y="92" width="150" height="25"/>
+                                            <rect key="frame" x="157" y="88" width="150" height="23"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="right" title="10,000,000" drawsBackground="YES" id="4SD-hc-Jgn">
                                                 <font key="font" metaFont="system"/>
                                                 <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -844,7 +843,7 @@
                                     <constraint firstItem="izb-a7-myh" firstAttribute="width" secondItem="jJu-aJ-YaL" secondAttribute="width" id="inb-b5-WTz"/>
                                     <constraint firstItem="izb-a7-myh" firstAttribute="width" secondItem="L6m-7H-OGq" secondAttribute="width" id="kVS-TJ-gZD"/>
                                     <constraint firstItem="izb-a7-myh" firstAttribute="leading" secondItem="ctt-oY-jr0" secondAttribute="trailing" constant="5" id="kmB-nx-Hqo"/>
-                                    <constraint firstItem="FS6-cu-CK7" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="izb-a7-myh" secondAttribute="trailing" constant="5" id="lEN-aI-NVP"/>
+                                    <constraint firstItem="FS6-cu-CK7" firstAttribute="leading" secondItem="izb-a7-myh" secondAttribute="trailing" constant="5" id="lEN-aI-NVP"/>
                                     <constraint firstItem="L6m-7H-OGq" firstAttribute="centerX" secondItem="jJu-aJ-YaL" secondAttribute="centerX" id="oXq-dh-QR9"/>
                                     <constraint firstItem="gwc-7Z-hWu" firstAttribute="centerY" secondItem="SPH-vP-fLJ" secondAttribute="centerY" constant="3" id="sE7-Gl-uoc"/>
                                     <constraint firstItem="k9q-Ca-cPF" firstAttribute="centerX" secondItem="jJu-aJ-YaL" secondAttribute="centerX" id="tMq-CB-NGE"/>
@@ -881,7 +880,7 @@ DQ
                                     <binding destination="XfG-lQ-9wD" name="value" keyPath="self.theComputeSettings.doCalculationsInSwift" id="j6i-1K-vkT"/>
                                 </connections>
                             </button>
-                            <button ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5aM-1H-raY">
+                            <button translatesAutoresizingMaskIntoConstraints="NO" id="5aM-1H-raY">
                                 <rect key="frame" x="328" y="11" width="127" height="18"/>
                                 <buttonCell key="cell" type="check" title="Compute (Obj-C)" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Eq2-Lv-HVy">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -892,8 +891,8 @@ DQ
                                     <binding destination="XfG-lQ-9wD" name="value" keyPath="self.theComputeSettings.doCalculationsInObjC" id="eTD-sV-p7A"/>
                                 </connections>
                             </button>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7aR-Ub-vHO">
-                                <rect key="frame" x="163" y="90" width="215" height="17"/>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="7aR-Ub-vHO">
+                                <rect key="frame" x="161" y="90" width="219" height="17"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="17" id="Aik-bF-nHa"/>
                                     <constraint firstAttribute="width" constant="215" id="YUK-CB-6fR"/>

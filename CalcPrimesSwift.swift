@@ -23,13 +23,13 @@ class CalcPrimesSwift: NSObject, CalcPrimesProtocol
   {
     //println("In \(__FUNCTION__)")
     theComputeRecord = aComputeRecord
+    var primes: [Int] = [Int]()
     if let requiredComputeRecord = theComputeRecord
     {
       startTime = NSDate.timeIntervalSinceReferenceDate()
       var totalCount: NSInteger = requiredComputeRecord.totalToCalculate
       var candidate: Int = 3
       var isPrime: Bool = false
-      var primes: [Int] = [Int]()
       primes.reserveCapacity(requiredComputeRecord.totalToCalculate)
       
       primes.append(2)
@@ -61,15 +61,24 @@ class CalcPrimesSwift: NSObject, CalcPrimesProtocol
               withUpdateDisplayBlock: theUpdateDisplayBlock)
           }
         }
+        //Move on to the next (odd) number.
+        candidate += 2;
+
       }
       self.updateTotal(primes.count,
         theComputeRecord: requiredComputeRecord,
         withUpdateDisplayBlock: theUpdateDisplayBlock)
     }
-    println("Checking for swift completion block")
+    //println("Checking for swift completion block")
+    
+    for var index = primes.count-101; index < primes.count; index++
+{
+      var aPrime = primes[index]
+      println("Prime[\(index)] = \(aPrime)")
+    }
     if theCalcPrimesCompletionBlock != nil
     {
-      println("calling swift completion block")
+      //println("calling swift completion block")
       dispatch_async(dispatch_get_main_queue(), theCalcPrimesCompletionBlock)
     }
   }

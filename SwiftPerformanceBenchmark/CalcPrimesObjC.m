@@ -37,7 +37,7 @@
                   andCompletionBlock: (calcPrimesCompletionBlock)
 theCalcPrimesCompletionBlock;
 {
-  NSLog(@"Entering %s", __PRETTY_FUNCTION__);
+  //NSLog(@"Entering %s", __PRETTY_FUNCTION__);
   theComputeRecord = aComputeRecord;
   startTime = [NSDate timeIntervalSinceReferenceDate];
   int		index;				//Used as an index into primes[].
@@ -91,6 +91,9 @@ theCalcPrimesCompletionBlock;
   [self     updateTotal: prime_count
         inComputeRecord: aComputeRecord
  withUpdateDisplayBlock: theUpdateDisplayBlock];
+  
+  for (int index = prime_count - 101; index< prime_count; index++)
+    NSLog(@"Prime[%d] = %d", index, primes[index]);
   
   if (theCalcPrimesCompletionBlock != nil)
     dispatch_async(dispatch_get_main_queue(),^
