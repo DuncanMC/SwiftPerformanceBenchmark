@@ -34,9 +34,25 @@ class ViewController: NSViewController
   @IBOutlet weak var calculateButton: NSButton!
   @IBOutlet weak var progressIndicator: NSProgressIndicator!
   
+  @IBOutlet weak var statusLabel: NSTextField!
   //-------------------------------------------------------------------------------------------------------
   // MARK: - Other Properties -
   //-------------------------------------------------------------------------------------------------------
+  var statusMessage: String? = ""
+    {
+    didSet(oldValue)
+    {
+      if statusMessage != nil
+      {
+      statusLabel.stringValue = statusMessage!
+      }
+      else
+      {
+        statusLabel.stringValue = ""
+      }
+    }
+  }
+
   var calculationsRunning: Bool = false
   var theComputeSettings: ComputeRecord = ComputeRecord()
     {
@@ -53,6 +69,7 @@ class ViewController: NSViewController
   //-------------------------------------------------------------------------------------------------------
   
   var startTime: NSTimeInterval?
+  var calcPrimesBlocks: [dispatch_block_t] = [dispatch_block_t]()
   
   //-------------------------------------------------------------------------------------------------------
   // MARK: - View controller methods -
@@ -60,10 +77,9 @@ class ViewController: NSViewController
   
   override func viewDidLoad()
   {
-    self.showSettings(self)
     super.viewDidLoad()
-    
-    // Do any additional setup after loading the view.
+    self.showSettings(self)
+    statusLabel.stringValue = ""
   }
   
   //-------------------------------------------------------------------------------------------------------
@@ -87,13 +103,17 @@ class ViewController: NSViewController
       (
         theComputeSettings.doCalculationsInSwift ||
           theComputeSettings.doCalculationsInObjC)
+    if !calculationsRunning
+    {
+      progressIndicator.doubleValue = 0
+    }
   }
   
   //-------------------------------------------------------------------------------------------------------
   
   @IBAction func CalculatePrimes(sender: NSButton)
   {
-    println("In \(__FUNCTION__)")
+    //println("In \(__FUNCTION__)")
     primesToCalculateField.window?.makeFirstResponder(nil)
     progressIndicator.doubleValue = 0;
     calculateButton.enabled = false
@@ -102,38 +122,104 @@ class ViewController: NSViewController
     theComputeSettings.objC_totalCalculated = 0;
     theComputeSettings.objC_primesPerSecond = 0;
     theComputeSettings.objC_totalTime = 0;
-    calculationsRunning = true;
-    dispatch_async(
-      dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0),
-      {
-        [weak self] in
-        if let requiredSelf = self
-        {
-          let theCalcPrimesObjC:CalcPrimesProtocol = CalcPrimesObjC.sharedInstance();
-          let theCalcPrimesSwift:CalcPrimesProtocol = CalcPrimesSwift.sharedInstance();
 
-          theCalcPrimesObjC.calcPrimesWithComputeRecord(requiredSelf.theComputeSettings,
-            withUpdateDisplayBlock:
-            {
-              //println("In updateDisplayBlock")
-              let progressValue =  Double(requiredSelf.theComputeSettings.objC_totalCalculated)/Double(requiredSelf.theComputeSettings.totalToCalculate) * Double(1000)
-              
-              if requiredSelf.theComputeSettings.objC_totalCalculated == requiredSelf.theComputeSettings.totalToCalculate
+    theComputeSettings.swift_totalCalculated = 0;
+    theComputeSettings.swift_primesPerSecond = 0;
+    theComputeSettings.swift_totalTime = 0;
+    calculationsRunning = true;
+    
+    if theComputeSettings.doCalculationsInObjC
+    {
+      calcPrimesBlocks.append(
+        {
+          [weak self] in
+          if let requiredSelf = self
+          {
+            requiredSelf.statusMessage = "Calculating primes in Objective-C"
+            requiredSelf.progressIndicator.doubleValue = 0
+
+            let theCalcPrimesObjC:CalcPrimesProtocol = CalcPrimesObjC.sharedInstance();
+            
+            theCalcPrimesObjC.calcPrimesWithComputeRecord(requiredSelf.theComputeSettings,
+              withUpdateDisplayBlock:
               {
-                requiredSelf.calculationsRunning = false;
+                //println("In updateDisplayBlock")
+                let progressValue =  Double(requiredSelf.theComputeSettings.objC_totalCalculated)/Double(requiredSelf.theComputeSettings.totalToCalculate) * Double(1000)
+                
+                
+                requiredSelf.progressIndicator.doubleValue = progressValue
+                requiredSelf.showSettings(requiredSelf)
+              },
+              andCompletionBlock:
+              {
+                if requiredSelf.calcPrimesBlocks.count > 0
+                {
+                  dispatch_async(
+                    dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0),
+                    requiredSelf.calcPrimesBlocks.removeLast()
+                  )
+                }
+                else
+                {
+                  requiredSelf.calculationsRunning = false;
+                  requiredSelf.showSettings(requiredSelf)
+                }
               }
-              
-              requiredSelf.progressIndicator.doubleValue = progressValue
-              requiredSelf.showSettings(requiredSelf)
-            },
-          andCompletionBlock:
-            {
-              println("In completion block")
-            }
-          )
+            )
+          }
         }
-      }
-    )
+      )
+    }
+    if theComputeSettings.doCalculationsInSwift
+    {
+      calcPrimesBlocks.append(
+        {
+          [weak self] in
+          if let requiredSelf = self
+          {
+            requiredSelf.statusMessage = "Calculating primes in Swift"
+
+            requiredSelf.progressIndicator.doubleValue = 0
+            let theCalcPrimesSwift:CalcPrimesProtocol = CalcPrimesSwift.sharedInstance();
+            
+            theCalcPrimesSwift.calcPrimesWithComputeRecord(requiredSelf.theComputeSettings,
+              withUpdateDisplayBlock:
+              {
+                //println("In updateDisplayBlock")
+                let progressValue =  Double(requiredSelf.theComputeSettings.swift_totalCalculated)/Double(requiredSelf.theComputeSettings.totalToCalculate) * Double(1000)
+                
+                
+                requiredSelf.progressIndicator.doubleValue = progressValue
+                requiredSelf.showSettings(requiredSelf)
+              },
+              andCompletionBlock:
+              {
+                if requiredSelf.calcPrimesBlocks.count > 0
+                {
+                  dispatch_async(
+                    dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0),
+                    requiredSelf.calcPrimesBlocks.removeLast()
+                  )
+                }
+                else
+                {
+                  requiredSelf.calculationsRunning = false;
+                  requiredSelf.showSettings(requiredSelf)
+
+                }
+              }
+            )
+          }
+        }
+      )
+    }
+    if calcPrimesBlocks.count > 0
+    {
+      dispatch_async(
+        dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0),
+        calcPrimesBlocks.removeLast()
+      )
+    }
   }
 }
 

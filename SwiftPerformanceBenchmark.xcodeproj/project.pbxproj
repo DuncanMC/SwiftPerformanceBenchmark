@@ -43,7 +43,7 @@
 		AE7560711ACB398100EFD3D4 /* SwiftPerformanceBenchmark-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SwiftPerformanceBenchmark-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
 		AE9AE2451ACB3B8900ADCAD0 /* CalcPrimesObjC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CalcPrimesObjC.h; path = SwiftPerformanceBenchmark/CalcPrimesObjC.h; sourceTree = "<group>"; };
 		AE9AE2461ACB3B8900ADCAD0 /* CalcPrimesObjC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CalcPrimesObjC.m; path = SwiftPerformanceBenchmark/CalcPrimesObjC.m; sourceTree = "<group>"; };
-		AE9AE2481ACC23A100ADCAD0 /* CalcPrimesSwift.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalcPrimesSwift.swift; sourceTree = "<group>"; };
+		AE9AE2481ACC23A100ADCAD0 /* CalcPrimesSwift.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalcPrimesSwift.swift; path = ../CalcPrimesSwift.swift; sourceTree = "<group>"; };
 		AE9AE24A1ACC25A900ADCAD0 /* CalcPrimesProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CalcPrimesProtocol.h; path = SwiftPerformanceBenchmark/CalcPrimesProtocol.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -68,9 +68,6 @@
 		AE7560401ACACC0E00EFD3D4 = {
 			isa = PBXGroup;
 			children = (
-				AE9AE24B1ACC298F00ADCAD0 /* Objective-C files */,
-				AE9AE2481ACC23A100ADCAD0 /* CalcPrimesSwift.swift */,
-				AE7560711ACB398100EFD3D4 /* SwiftPerformanceBenchmark-Bridging-Header.h */,
 				AE75604B1ACACC0E00EFD3D4 /* SwiftPerformanceBenchmark */,
 				AE75605E1ACACC0E00EFD3D4 /* SwiftPerformanceBenchmarkTests */,
 				AE75604A1ACACC0E00EFD3D4 /* Products */,
@@ -89,6 +86,9 @@
 		AE75604B1ACACC0E00EFD3D4 /* SwiftPerformanceBenchmark */ = {
 			isa = PBXGroup;
 			children = (
+				AE9AE24B1ACC298F00ADCAD0 /* Objective-C files */,
+				AE7560711ACB398100EFD3D4 /* SwiftPerformanceBenchmark-Bridging-Header.h */,
+				AE9AE2481ACC23A100ADCAD0 /* CalcPrimesSwift.swift */,
 				AE75604E1ACACC0E00EFD3D4 /* AppDelegate.swift */,
 				AE75606D1ACB178300EFD3D4 /* ComputeRecord.swift */,
 				AE7560501ACACC0E00EFD3D4 /* ViewController.swift */,
@@ -133,6 +133,7 @@
 				AE9AE2461ACB3B8900ADCAD0 /* CalcPrimesObjC.m */,
 			);
 			name = "Objective-C files";
+			path = ..;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

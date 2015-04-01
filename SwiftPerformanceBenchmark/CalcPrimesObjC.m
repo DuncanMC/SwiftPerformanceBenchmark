@@ -37,12 +37,13 @@
                   andCompletionBlock: (calcPrimesCompletionBlock)
 theCalcPrimesCompletionBlock;
 {
+  NSLog(@"Entering %s", __PRETTY_FUNCTION__);
   theComputeRecord = aComputeRecord;
   startTime = [NSDate timeIntervalSinceReferenceDate];
   int		index;				//Used as an index into primes[].
   int		prime_count;  //The number of primes we'e found so far
   int		candidate;		//The number we are considering as a possible prime
-  int   is_prime;
+  BOOL   is_prime;
   
   int *primes = (int *)malloc(sizeof(int) * aComputeRecord.totalToCalculate);
   
