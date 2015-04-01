@@ -9,9 +9,15 @@
 #import "CalcPrimesObjC.h"
 #import "SwiftPerformanceBenchmark-Swift.h"
 
+
+
 @implementation CalcPrimesObjC
 
-+ (instancetype) sharedCalcPrimesObjC
+//-------------------------------------------------------------------------------------------------------
+#pragma mark - Class methods
+//-------------------------------------------------------------------------------------------------------
+
++ (instancetype) sharedInstance
 {
   static CalcPrimesObjC *_sharedCalcPrimesObjC;
   static dispatch_once_t onceToken;
@@ -22,7 +28,14 @@
   return _sharedCalcPrimesObjC;
 }
 
-- (void) calcPrimesWithComputeRecord: (ComputeRecord *) aComputeRecord;
+//-------------------------------------------------------------------------------------------------------
+#pragma mark - Instance methods
+//-------------------------------------------------------------------------------------------------------
+
+- (void) calcPrimesWithComputeRecord: (ComputeRecord *) aComputeRecord
+              withUpdateDisplayBlock: (updateDisplayBlock) theUpdateDisplayBlock
+                  andCompletionBlock: (calcPrimesCompletionBlock)
+theCalcPrimesCompletionBlock;
 {
   theComputeRecord = aComputeRecord;
   startTime = [NSDate timeIntervalSinceReferenceDate];
@@ -66,27 +79,42 @@
       primes[prime_count++] = candidate;
       if ((prime_count & 0xfffffU) == 0)
       {
-        [self updateTotal: prime_count inComputeRecord: aComputeRecord];
+        [self updateTotal: prime_count
+          inComputeRecord: aComputeRecord
+   withUpdateDisplayBlock: theUpdateDisplayBlock];
       }
     }
     //Move on to the next (odd) number.
     candidate += 2;
   }
-  [self updateTotal: prime_count inComputeRecord: aComputeRecord];
+  [self     updateTotal: prime_count
+        inComputeRecord: aComputeRecord
+ withUpdateDisplayBlock: theUpdateDisplayBlock];
+  
+  if (theCalcPrimesCompletionBlock != nil)
+    dispatch_async(dispatch_get_main_queue(),^
+                   {
+                     theCalcPrimesCompletionBlock();
+                   }
+                   );
+
   free(primes);
 }
 
+//-------------------------------------------------------------------------------------------------------
+
 - (void)  updateTotal: (NSInteger) newTotal
-      inComputeRecord: (ComputeRecord *) aComputeRecord;
+      inComputeRecord: (ComputeRecord *) aComputeRecord
+withUpdateDisplayBlock:  (updateDisplayBlock) theUpdateDisplayBlock;
 {
   NSTimeInterval now = [NSDate timeIntervalSinceReferenceDate];
   aComputeRecord.objC_totalTime = now - startTime;
   aComputeRecord.objC_totalCalculated = newTotal;
   aComputeRecord.objC_primesPerSecond = aComputeRecord.objC_totalCalculated/aComputeRecord.objC_totalTime;
-  if (self.updateDisplayBlock)
+  if (theUpdateDisplayBlock != nil)
     dispatch_async(dispatch_get_main_queue(),^
                    {
-                     self.updateDisplayBlock();
+                     theUpdateDisplayBlock();
                    }
                    );
 }

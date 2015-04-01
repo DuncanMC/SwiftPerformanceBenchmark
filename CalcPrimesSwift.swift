@@ -7,3 +7,19 @@
 //
 
 import Foundation
+
+private let _theCalcPrimesSwiftInstance: CalcPrimesSwift = CalcPrimesSwift()
+
+class CalcPrimesSwift: NSObject, CalcPrimesProtocol
+{
+  
+  class func sharedInstance() -> CalcPrimesProtocol
+  {
+    return _theCalcPrimesSwiftInstance
+  }
+  
+  func calcPrimesWithComputeRecord(aComputeRecord: ComputeRecord!, withUpdateDisplayBlock theUpdateDisplayBlock: updateDisplayBlock!, andCompletionBlock theCalcPrimesCompletionBlock: calcPrimesCompletionBlock!)
+  {
+    
+  }
+}

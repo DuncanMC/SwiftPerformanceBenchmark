@@ -7,7 +7,18 @@
 //
 
 #import <Foundation/Foundation.h>
+@class ComputeRecord;
+
+typedef void (^updateDisplayBlock)(void);
+typedef void (^calcPrimesCompletionBlock)(void);
 
 @protocol CalcPrimesProtocol <NSObject>
+
+- (void) calcPrimesWithComputeRecord: (ComputeRecord *) aComputeRecord
+              withUpdateDisplayBlock: (updateDisplayBlock) theUpdateDisplayBlock
+andCompletionBlock: (calcPrimesCompletionBlock)
+theCalcPrimesCompletionBlock;
+@optional
++ (NSObject <CalcPrimesProtocol> *) sharedInstance;
 
 @end

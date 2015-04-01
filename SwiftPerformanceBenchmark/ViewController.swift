@@ -94,6 +94,7 @@ class ViewController: NSViewController
   @IBAction func CalculatePrimes(sender: NSButton)
   {
     println("In \(__FUNCTION__)")
+    primesToCalculateField.window?.makeFirstResponder(nil)
     progressIndicator.doubleValue = 0;
     calculateButton.enabled = false
     
@@ -108,8 +109,11 @@ class ViewController: NSViewController
         [weak self] in
         if let requiredSelf = self
         {
-          let theCalcPrimesObjC = CalcPrimesObjC.sharedCalcPrimesObjC();
-          theCalcPrimesObjC.updateDisplayBlock =
+          let theCalcPrimesObjC:CalcPrimesProtocol = CalcPrimesObjC.sharedInstance();
+          let theCalcPrimesSwift:CalcPrimesProtocol = CalcPrimesSwift.sharedInstance();
+
+          theCalcPrimesObjC.calcPrimesWithComputeRecord(requiredSelf.theComputeSettings,
+            withUpdateDisplayBlock:
             {
               //println("In updateDisplayBlock")
               let progressValue =  Double(requiredSelf.theComputeSettings.objC_totalCalculated)/Double(requiredSelf.theComputeSettings.totalToCalculate) * Double(1000)
@@ -121,8 +125,12 @@ class ViewController: NSViewController
               
               requiredSelf.progressIndicator.doubleValue = progressValue
               requiredSelf.showSettings(requiredSelf)
-          }
-          theCalcPrimesObjC.calcPrimesWithComputeRecord(requiredSelf.theComputeSettings)
+            },
+          andCompletionBlock:
+            {
+              println("In completion block")
+            }
+          )
         }
       }
     )

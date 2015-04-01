@@ -7,18 +7,16 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "CalcPrimesProtocol.h"
 
 @class ComputeRecord;
 
-@interface CalcPrimesObjC : NSTableColumn
+@interface CalcPrimesObjC : NSObject <CalcPrimesProtocol>
 {
   NSTimeInterval startTime;
   ComputeRecord *theComputeRecord;
 }
-@property (nonatomic, strong) void (^updateDisplayBlock)(void);
 
-+ (instancetype) sharedCalcPrimesObjC;
-
-- (void) calcPrimesWithComputeRecord: (ComputeRecord *) theComputeRecord;
++ (instancetype) sharedInstance;
 
 @end
