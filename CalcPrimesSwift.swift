@@ -56,7 +56,7 @@ class CalcPrimesSwift:  NSObject, CalcPrimesProtocol
         if isPrime
         {
           primes.append(candidate)
-          if (primes.count & 0xfffff) == 0
+          if (primes.count & 0x3ffff) == 0
           {
             self.updateTotal(primes.count,
               theComputeRecord: requiredComputeRecord,

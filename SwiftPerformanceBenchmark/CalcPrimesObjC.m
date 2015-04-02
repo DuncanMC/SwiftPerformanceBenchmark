@@ -78,7 +78,7 @@ theCalcPrimesCompletionBlock;
     if (is_prime)
     {
       primes[prime_count++] = candidate;
-      if ((prime_count & 0xfffffU) == 0)
+      if ((prime_count & 0x3ffff) == 0)
       {
         [self updateTotal: prime_count
           inComputeRecord: aComputeRecord
