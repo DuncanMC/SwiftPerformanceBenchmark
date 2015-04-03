@@ -15,6 +15,8 @@
 {
   NSTimeInterval startTime;
   ComputeRecord *theComputeRecord;
+  BOOL logPrimes;
+
 }
 
 + (instancetype) sharedInstance;

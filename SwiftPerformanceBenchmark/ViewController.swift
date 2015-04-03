@@ -119,9 +119,13 @@ class ViewController: NSViewController
         }
         
       }
-      else
+      else if theComputeSettings.swift_totalTime > 0  && theComputeSettings.objC_totalTime > 0
       {
         statusMessage = "Calculations complete."
+      }
+      else
+      {
+        statusMessage = ""
       }
       
       
@@ -172,6 +176,10 @@ class ViewController: NSViewController
               },
               andCompletionBlock:
               {
+                let totalTimeString = intervalAsHHMMSS(requiredSelf.theComputeSettings.objC_totalTime)
+                let usingArraysString = requiredSelf.theComputeSettings.objC_useArrayObjects ?
+                  "using NSArrays " : ""
+                println("\nCalculating primes \(usingArraysString)in Obj-C took \(totalTimeString)")
                 if requiredSelf.calcPrimesBlocks.count > 0
                 {
                   dispatch_async(
@@ -214,6 +222,11 @@ class ViewController: NSViewController
               },
               andCompletionBlock:
               {
+                let totalTimeString = intervalAsHHMMSS(requiredSelf.theComputeSettings.swift_totalTime)
+                let usingArraysString = requiredSelf.theComputeSettings.swift_useArrayObjects ?
+                  "using Arrays " : ""
+                println("\nCalculating primes \(usingArraysString)in Swift took \(totalTimeString)")
+
                 if requiredSelf.calcPrimesBlocks.count > 0
                 {
                   dispatch_async(
@@ -225,7 +238,6 @@ class ViewController: NSViewController
                 {
                   requiredSelf.calculationsRunning = false
                   requiredSelf.showSettings(requiredSelf)
-
                 }
               }
             )

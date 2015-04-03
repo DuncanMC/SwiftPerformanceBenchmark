@@ -13,6 +13,7 @@ class ComputeRecord: NSObject
   var totalToCalculate: Int = 2_000_000
   
   var doCalculationsInSwift: Bool = true
+  var swift_useArrayObjects: Bool = false
   var swift_totalCalculated: Int = 0
     {
     willSet(newValue)
@@ -38,6 +39,7 @@ class ComputeRecord: NSObject
   var swift_totalTime: NSTimeInterval = 0.0
   
   var doCalculationsInObjC: Bool = true
+  var objC_useArrayObjects: Bool = false
   var objC_totalCalculated: Int = 0
     {
     willSet(newValue)
