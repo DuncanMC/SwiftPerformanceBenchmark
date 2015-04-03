@@ -47,7 +47,7 @@
   
   NSInteger totalCount = aComputeRecord.totalToCalculate;
   
-  primes[0] =		@(2);
+  primes[0] =		[NSNumber numberWithUnsignedInt: 2];
   prime_count =	1;
   candidate =		3;
   startTime = [NSDate timeIntervalSinceReferenceDate];
@@ -76,7 +76,7 @@
     }
     if (is_prime)
     {
-      primes[prime_count++] = @(candidate);
+      primes[prime_count++] = [NSNumber numberWithUnsignedInt: candidate];
       if ((prime_count & 0x3ffff) == 0)
       {
         [self updateTotal: prime_count

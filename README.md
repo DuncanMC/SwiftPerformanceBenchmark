@@ -3,7 +3,14 @@
 
 This is a hybrid Swift/Objective-C project for Mac OS.
 
+It was written as a performance benchmark to compare Swift and OBjective-C in a memory and compute-intensive task.
+
 It calculates large arrays of prime numbers in both languages and tracks the amount of time required for both.
+
+For the Swift test, you can choose to use either an Array object or an Array<UInt32>
+
+For the Objective-C test, you can choose between NSArrays or C arrays.
+
 
 It demonstrates a number of different techniques:
 

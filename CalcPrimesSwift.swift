@@ -57,7 +57,7 @@ class CalcPrimesSwift:  NSObject, CalcPrimesProtocol
       var candidate: UInt32 = 3
       var isPrime: Bool = false
       let byteSize = Int(requiredComputeRecord.totalToCalculate * sizeof(UInt32))
-      var ptr = UnsafeIntPointer(malloc(UInt(byteSize)))
+      var ptr = UnsafeIntPointer(malloc(size_t(byteSize)))
       primes = UnsafeIntArray(start: ptr, count: theComputeRecord!.totalToCalculate)
       primes[primeCount++] = 2
       

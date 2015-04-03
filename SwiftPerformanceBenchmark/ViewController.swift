@@ -118,6 +118,8 @@ class ViewController: NSViewController
           
         }
         
+        println(statusMessage!)
+        
       }
       else if theComputeSettings.swift_totalTime > 0  && theComputeSettings.objC_totalTime > 0
       {
@@ -179,7 +181,7 @@ class ViewController: NSViewController
                 let totalTimeString = intervalAsHHMMSS(requiredSelf.theComputeSettings.objC_totalTime)
                 let usingArraysString = requiredSelf.theComputeSettings.objC_useArrayObjects ?
                   "using NSArrays " : ""
-                println("\nCalculating primes \(usingArraysString)in Obj-C took \(totalTimeString)")
+                println("Calculating primes \(usingArraysString)in Obj-C took \(totalTimeString)")
                 if requiredSelf.calcPrimesBlocks.count > 0
                 {
                   dispatch_async(
