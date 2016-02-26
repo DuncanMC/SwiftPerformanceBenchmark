@@ -43,7 +43,6 @@ class CalcPrimesSwift:  NSObject, CalcPrimesProtocol
   func calcPrimesWithComputeRecordUsingBuffer(aComputeRecord: ComputeRecord!, withUpdateDisplayBlock theUpdateDisplayBlock: updateDisplayBlock!, andCompletionBlock theCalcPrimesCompletionBlock: calcPrimesCompletionBlock!)
   {
     theComputeRecord = aComputeRecord
-    var useArrayObjects = false
     typealias UnsafeIntPointer = UnsafeMutablePointer<UInt32>
     typealias UnsafeIntArray = UnsafeMutableBufferPointer<UInt32>
     
@@ -53,11 +52,11 @@ class CalcPrimesSwift:  NSObject, CalcPrimesProtocol
     if let requiredComputeRecord = theComputeRecord
     {
       startTime = NSDate.timeIntervalSinceReferenceDate()
-      var totalCount: NSInteger = requiredComputeRecord.totalToCalculate
+      let totalCount: NSInteger = requiredComputeRecord.totalToCalculate
       var candidate: UInt32 = 3
       var isPrime: Bool = false
       let byteSize = Int(requiredComputeRecord.totalToCalculate * sizeof(UInt32))
-      var ptr = UnsafeIntPointer(malloc(size_t(byteSize)))
+      let ptr = UnsafeIntPointer(malloc(size_t(byteSize)))
       primes = UnsafeIntArray(start: ptr, count: theComputeRecord!.totalToCalculate)
       primes[primeCount++] = 2
       
@@ -102,8 +101,8 @@ class CalcPrimesSwift:  NSObject, CalcPrimesProtocol
         //print the last 10 primes calculated
         for var index = primeCount-11; index < primeCount; index++
         {
-          var aPrime = primes[index]
-          println("Prime[\(index)] = \(aPrime)")
+          let aPrime = primes[index]
+          print("Prime[\(index)] = \(aPrime)", terminator: "")
         }
       }
       free(ptr)
@@ -120,7 +119,7 @@ class CalcPrimesSwift:  NSObject, CalcPrimesProtocol
   func calcPrimesWithComputeRecordUsingArray(aComputeRecord: ComputeRecord!, withUpdateDisplayBlock theUpdateDisplayBlock: updateDisplayBlock!, andCompletionBlock theCalcPrimesCompletionBlock: calcPrimesCompletionBlock!)
   {
     theComputeRecord = aComputeRecord
-    var useArrayObjects = false
+    //var useArrayObjects = false
     typealias UnsafeIntPointer = UnsafeMutablePointer<Int>
     typealias UnsafeIntArray = UnsafeMutableBufferPointer<Int>
     //--
@@ -135,7 +134,7 @@ class CalcPrimesSwift:  NSObject, CalcPrimesProtocol
     if let requiredComputeRecord = theComputeRecord
     {
       startTime = NSDate.timeIntervalSinceReferenceDate()
-      var totalCount: NSInteger = requiredComputeRecord.totalToCalculate
+      let totalCount: NSInteger = requiredComputeRecord.totalToCalculate
       var candidate: UInt32 = 3
       var isPrime: Bool = false
       primes.reserveCapacity(requiredComputeRecord.totalToCalculate)
@@ -184,8 +183,8 @@ class CalcPrimesSwift:  NSObject, CalcPrimesProtocol
       //print the last 10 primes calculated
       for var index = primes.count-11; index < primes.count; index++
       {
-        var aPrime = primes[index]
-        println("Prime[\(index)] = \(aPrime)")
+        let aPrime = primes[index]
+        print("Prime[\(index)] = \(aPrime)")
       }
     }
     if theCalcPrimesCompletionBlock != nil

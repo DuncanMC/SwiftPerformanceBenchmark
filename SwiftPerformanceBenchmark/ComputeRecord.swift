@@ -13,7 +13,7 @@ class ComputeRecord: NSObject
   var totalToCalculate: Int = 2_000_000
   
   var doCalculationsInSwift: Bool = true
-  var swift_useArrayObjects: Bool = false
+  var swift_useArrayObjects: Bool = true
   var swift_totalCalculated: Int = 0
     {
     willSet(newValue)
